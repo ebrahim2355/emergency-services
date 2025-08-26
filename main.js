@@ -18,3 +18,32 @@ for(const heart of hearts){
     })
 }
 
+
+// call button functions
+const callButtons = document.getElementsByClassName("call-button");
+
+for(const button of callButtons){
+    button.addEventListener("click", function(){
+        const card = button.parentElement;
+
+        const serviceName = card.querySelector(".service-name").innerText;
+        const serviceNumber = card.querySelector(".service-number").innerText;
+
+        const coinElement = document.getElementById("coin-count");
+        let coins = parseInt(coinElement.innerText);
+
+        if(coins < 20){
+            alert("Not enough coins to make the call!");
+            return;
+        }
+
+        coins = coins - 20;
+        coinElement.innerText = coins;
+
+        alert("Calling ${serviceName} at ${serviceNumber}");
+
+
+        const callHistory = document.getElementById("call-history");
+        
+    })
+}
