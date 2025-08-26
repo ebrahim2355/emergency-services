@@ -40,14 +40,14 @@ for(const button of callButtons){
         coins = coins - 20;
         coinElement.innerText = coins;
 
-        alert(`Calling ${serviceName} at ${serviceNumber}`);
+        alert(`Calling ${serviceName} at ${serviceNumber}....`);
 
 
         const callHistory = document.getElementById("call-history");
         const historyDiv = document.createElement("div");
 
         historyDiv.innerHTML = `
-        <div id="call-history" class="flex items-center justify-between bg-[#fafafa] p-[16px] rounded-[8px] mb-[8px]">
+        <div class="flex items-center justify-between bg-[#fafafa] p-[16px] rounded-[8px] mb-[8px]">
                 <div>
                     <p class="font-semibold text-[18px]">${serviceName}</p>
                     <p class="text-[#5c5c5c] text-[18px]">${serviceNumber}</p>
@@ -58,5 +58,22 @@ for(const button of callButtons){
         </div>
         `
         callHistory.appendChild(historyDiv);
+    })
+}
+
+// clear history button
+document.getElementById("clear-history-btn").addEventListener("click", function(){
+    document.getElementById("call-history").innerHTML = "";
+})
+
+// copy button section
+const copyButtons = document.getElementsByClassName("copy-button");
+
+for(const button of copyButtons){
+    button.addEventListener("click", function(){
+        const card = button.parentElement.parentElement;
+        const serviceNumber = card.querySelector(".service-number").innerText;
+
+        
     })
 }
