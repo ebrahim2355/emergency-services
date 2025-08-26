@@ -74,6 +74,15 @@ for(const button of copyButtons){
         const card = button.parentElement.parentElement;
         const serviceNumber = card.querySelector(".service-number").innerText;
 
-        
+        navigator.clipboard.writeText(serviceNumber).then(() => {
+            const copyElement = document.getElementById("copy-count");
+            let copyCount = parseInt(copyElement.innerText);
+            copyElement.innerText = copyCount + 1;
+
+            alert(`Copied: ${serviceNumber}`);
+        })
+        .catch(err => {
+            console.log("Failed to copy:", err);
+        })
     })
 }
