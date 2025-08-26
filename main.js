@@ -24,7 +24,7 @@ const callButtons = document.getElementsByClassName("call-button");
 
 for(const button of callButtons){
     button.addEventListener("click", function(){
-        const card = button.parentElement;
+        const card = button.parentElement.parentElement;
 
         const serviceName = card.querySelector(".service-name").innerText;
         const serviceNumber = card.querySelector(".service-number").innerText;
@@ -40,10 +40,23 @@ for(const button of callButtons){
         coins = coins - 20;
         coinElement.innerText = coins;
 
-        alert("Calling ${serviceName} at ${serviceNumber}");
+        alert(`Calling ${serviceName} at ${serviceNumber}`);
 
 
         const callHistory = document.getElementById("call-history");
-        
+        const historyDiv = document.createElement("div");
+
+        historyDiv.innerHTML = `
+        <div id="call-history" class="flex items-center justify-between bg-[#fafafa] p-[16px] rounded-[8px] mb-[8px]">
+                <div>
+                    <p class="font-semibold text-[18px]">${serviceName}</p>
+                    <p class="text-[#5c5c5c] text-[18px]">${serviceNumber}</p>
+                </div>
+                <div>
+                    <p class="text-[18px]">${new Date().toLocaleTimeString()}</p>
+                </div>
+        </div>
+        `
+        callHistory.appendChild(historyDiv);
     })
 }
